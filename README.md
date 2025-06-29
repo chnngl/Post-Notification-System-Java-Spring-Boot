@@ -75,7 +75,7 @@ This is a backend project developed using **Spring Boot** that imitates a simpli
 ---
 
 ## 🧪 Configuration & Setup
-🔧 Step 1: Configure the Database
+▶Step 1: Configure the Database
 Navigate to the configuration file:
 
 springboot-post-rest-api/src/main/resources/application.properties
@@ -91,7 +91,7 @@ spring.jpa.hibernate.ddl-auto=update
 You will need to add the appropriate dependency to the pom.xml file (located at the root: springboot-post-rest-api/pom.xml).
 Update the application.properties file with the correct JDBC URL and driver class for your chosen database.
 
-▶️ Step 2: Run the Application
+▶Step 2: Run the Application
 To start the backend server:
 
 Locate the main class:
