@@ -96,6 +96,6 @@ To start the backend server:
 
 Locate the main class:
 
-springboot-post-rest-api/src/main/java/com/springboot/post/SpringbootPostRestApiApplication.java
-Run it using your IDE, and the application will start at:
+/src/main/java/com/springboot/post/SpringbootPostRestApiApplication.java
+Run it using IDE, and the application will start at:
 http://localhost:8080
