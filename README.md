@@ -9,7 +9,7 @@ This is a backend project developed using **Spring Boot** that imitates a simpli
 - Receive notifications from followed users
 - View personal feed based on followed users
 
-## 🛠️ Technologies Used
+## Technologies Used
 - Java 17
 - Spring Boot
 - RESTful API
@@ -17,9 +17,9 @@ This is a backend project developed using **Spring Boot** that imitates a simpli
 
 ---
 
-## 📬 API Endpoints Summary
+## API Endpoints Summary
 
-### 👥 User APIs
+### User APIs
 
 - **Get all users**
   - `GET /api/users`
@@ -45,7 +45,7 @@ This is a backend project developed using **Spring Boot** that imitates a simpli
 
 ---
 
-### 📝 Post APIs
+### Post APIs
 
 - **Create a post**
   - `POST /api/{userId}/posts`
@@ -66,7 +66,7 @@ This is a backend project developed using **Spring Boot** that imitates a simpli
 
 ---
 
-### 🔔 Notification APIs
+### Notification APIs
 
 - **Get notifications for a user (when followed users post)**
   - `GET /api/{userId}/notifications`
@@ -74,7 +74,7 @@ This is a backend project developed using **Spring Boot** that imitates a simpli
 
 ---
 
-## 🧪 Configuration & Setup
+## Configuration & Setup
 #Step 1: Configure the Database
 Navigate to the configuration file:
 
