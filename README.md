@@ -75,27 +75,27 @@ This is a backend project developed using **Spring Boot** that imitates a simpli
 ---
 
 ## Configuration & Setup
-#Step 1: Configure the Database
+# Step 1: Configure the Database
 Navigate to the configuration file:
 
 -springboot-post-rest-api/src/main/resources/application.properties
 - If you are using MySQL, you only need to modify the following properties with your database details:
 
--spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name
--spring.datasource.username=your_mysql_username
--spring.datasource.password=your_mysql_password
--spring.jpa.hibernate.ddl-auto=update
--Make sure your MySQL server is running and the database exists before launching the application.
+- spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name
+- spring.datasource.username=your_mysql_username
+- spring.datasource.password=your_mysql_password
+- spring.jpa.hibernate.ddl-auto=update
+- Make sure your MySQL server is running and the database exists before launching the application.
 
--If Using a Different Database
--You will need to add the appropriate dependency to the pom.xml file (located at the root: springboot-post-rest-api/pom.xml).
--Update the application.properties file with the correct JDBC URL and driver class for your chosen database.
+- If Using a Different Database
+- You will need to add the appropriate dependency to the pom.xml file (located at the root: springboot-post-rest-api/pom.xml).
+- Update the application.properties file with the correct JDBC URL and driver class for your chosen database.
 
-#Step 2: Run the Application
--To start the backend server:
+# Step 2: Run the Application
+- To start the backend server:
 
--Locate the main class:
+- Locate the main class:
 
--/src/main/java/com/springboot/post/SpringbootPostRestApiApplication.java
--Run it using IDE, and the application will start at:
--http://localhost:8080
+- /src/main/java/com/springboot/post/SpringbootPostRestApiApplication.java
+- Run it using IDE, and the application will start at:
+- http://localhost:8080
