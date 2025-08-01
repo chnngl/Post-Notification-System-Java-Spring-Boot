@@ -78,7 +78,7 @@ This is a backend project developed using **Spring Boot** that imitates a simpli
 # Step 1: Configure the Database
 Navigate to the configuration file:
 
--springboot-post-rest-api/src/main/resources/application.properties
+- springboot-post-rest-api/src/main/resources/application.properties
 - If you are using MySQL, you only need to modify the following properties with your database details:
 
   spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name
