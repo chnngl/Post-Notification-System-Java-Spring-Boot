@@ -40,8 +40,9 @@ public class UserController {
 
     //get posts from user's following
     @GetMapping("/{userId}/feed")
-    public ResponseEntity<List<PostDto>> getFollowingPosts(@PathVariable("userId") Long userId) {
-        List<PostDto> posts = postService.getFollowingPosts(userId);
+    public ResponseEntity<List<PostDto>> getFollowingPosts(@PathVariable("userId") Long userId, @RequestParam(defaultValue = "0") int page,
+                                                           @RequestParam(defaultValue = "10") int size) {
+        List<PostDto> posts = postService.getFollowingPosts(userId, page, size);
         return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
@@ -61,7 +62,7 @@ public class UserController {
 
     //follow one user
     @PostMapping("/{userId}/follow/{targetUserId}")
-    public ResponseEntity<Void> followUser(@PathVariable("userId") Long userId,
+    public ResponseEntity<String> followUser(@PathVariable("userId") Long userId,
                                            @PathVariable("targetUserId") Long targetUserId) {
         userService.followUser(userId, targetUserId);
         String message = "Successfully followed user with ID: " + targetUserId;
@@ -70,7 +71,7 @@ public class UserController {
 
     //unfollow one user
     @DeleteMapping("/{userId}/unfollow/{targetUserId}")
-    public ResponseEntity<Void> unfollowUser(@PathVariable("userId") Long userId,
+    public ResponseEntity<String> unfollowUser(@PathVariable("userId") Long userId,
                                              @PathVariable("targetUserId") Long targetUserId) {
         userService.unfollowUser(userId, targetUserId);
         String message = "Successfully unfollowed user with ID: " + targetUserId;

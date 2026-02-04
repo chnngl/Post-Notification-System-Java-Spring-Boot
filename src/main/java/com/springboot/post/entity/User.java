@@ -31,7 +31,13 @@ public class User implements Observer, Subject {
     private List<Post> posts = new ArrayList<Post>();
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_following", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "following_id") )
+    @JoinTable(name = "user_following", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "following_id"), uniqueConstraints = {
+            @UniqueConstraint(name = "uq_user_following", columnNames = {"user_id", "following_id"})
+    },
+            indexes = {
+                    @Index(name = "idx_user_following_user", columnList = "user_id"),
+                    @Index(name = "idx_user_following_following", columnList = "following_id")
+            } )
     private Set<User> following = new HashSet<>();
     @ManyToMany(mappedBy = "following",fetch = FetchType.EAGER)
     private Set<User> observers = new HashSet<>();

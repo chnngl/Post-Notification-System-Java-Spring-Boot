@@ -11,7 +11,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 
 @Entity
-@Table(name="posts")
+@Table(name="posts", indexes = {
+        @Index(name = "idx_posts_user_created", columnList = "user_id, created_at")
+})
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "post_type", discriminatorType = DiscriminatorType.STRING)
 public abstract class Post {

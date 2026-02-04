@@ -9,6 +9,9 @@ import com.springboot.post.repository.PostRepository;
 import com.springboot.post.repository.UserRepository;
 import com.springboot.post.service.PostService;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -69,20 +72,28 @@ public class PostServiceImpl implements PostService {
 
     @Override
     // fetch posts from users the current user is following
-    public List<PostDto> getFollowingPosts(Long userId) {
+    public List<PostDto> getFollowingPosts(Long userId, int page, int size) {
 
         User user = userRepository.findById(userId).orElseThrow(() ->
                 new ResourceNotFoundException("User", "id", userId));
 
         //fetch the following list from current user
         Set<User> following = user.getFollowing();
+        if (following.isEmpty()) return List.of();
         //get following lists' posts and sort them based on created time
-        List<Post> posts = following.stream().flatMap(followedUser ->
+        /*List<Post> posts = following.stream().flatMap(followedUser ->
                         followedUser.getPosts().stream())
                 .sorted(Comparator.comparing(Post::getCreatedAt).reversed())
                 .collect(Collectors.toList());
 
-        return posts.stream().map(post -> mapToDto(post)).collect(Collectors.toList());
+        return posts.stream().map(post -> mapToDto(post)).collect(Collectors.toList());*/
+        Pageable pageable = PageRequest.of(page, size); // sort already in query method
+        Page<Post> postPage = postRepository.findByUserInOrderByCreatedAtDesc(following, pageable);
+
+        return postPage.getContent()
+                .stream()
+                .map(this::mapToDto)
+                .collect(Collectors.toList());
     }
 
     //convert entity to DTO

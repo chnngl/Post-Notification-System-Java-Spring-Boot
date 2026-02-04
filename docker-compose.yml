@@ -1,0 +1,32 @@
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: userpost
+      MYSQL_ROOT_PASSWORD: 970430
+    ports:
+      - "3307:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p970430"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  api:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/userpost?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootpw
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+volumes:
+  mysql_data:

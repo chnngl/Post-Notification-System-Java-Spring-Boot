@@ -8,5 +8,5 @@ public interface PostService {
 
     PostDto createPost(long userId, PostDto postDto);
     List<PostDto> getPostByUserId(long userId);
-    List<PostDto> getFollowingPosts(Long userId);
+    List<PostDto> getFollowingPosts(Long userId, int page, int size);
 }
